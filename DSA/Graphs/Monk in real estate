@@ -1,0 +1,52 @@
+link-https://www.hackerearth.com/practice/algorithms/graphs/graph-representation/practice-problems/algorithm/monk-in-the-real-estate/description/
+
+import java.util.*;
+
+class TestClass {
+    public static void main(String args[] ) throws Exception 
+    {
+        int i=0,j=0,t=0,n=0,A=0,B=0,p=0,cities=0;
+        Map<Integer,List<Integer>> map=new HashMap<>();
+        Scanner sc=new Scanner(System.in);
+        t=sc.nextInt();
+        for(i=0;i<t;i++)
+        {
+            cities=0;
+            n=sc.nextInt();
+            
+            for(j=1;j<=n;j++)
+            {
+                cities=0;
+                A=sc.nextInt();
+                B=sc.nextInt();
+                if(!map.containsKey(A))
+                {
+                    map.put(A,new ArrayList<>());
+                }
+
+                if(!map.containsKey(B))
+                {
+                    map.put(B,new ArrayList<>());
+                }
+
+                map.get(A).add(B);
+                map.get(B).add(A);
+            }
+            
+        
+
+            for(Map.Entry<Integer,List<Integer>>e:map.entrySet())
+            {
+                p=e.getValue().size();
+                
+                if(p!=0)
+                {
+                    cities++;
+                }
+            }
+
+            System.out.println(cities);
+            cities=0;
+        }
+    }
+}
