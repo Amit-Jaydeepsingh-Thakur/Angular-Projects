@@ -1,0 +1,58 @@
+link-https://leetcode.com/explore/featured/card/june-leetcoding-challenge/541/week-3-june-15th-june-21st/3361/
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public TreeNode searchBST(TreeNode root, int val) 
+    {
+      if(root==null)
+      {
+        return(root);
+      }
+      TreeNode retNode=helper(root,val);
+      
+      return(retNode);
+        
+    }
+  
+  public TreeNode helper(TreeNode root,int val)
+  {
+    if(root==null)
+    {
+      return(root);
+    }
+    else
+    {
+      TreeNode left=helper(root.left,val);
+      TreeNode right=helper(root.right,val);
+      if(left!=null && right==null)
+      {
+        return(left);
+      }
+      
+      if(left==null && right!=null)
+      {
+        return(right);
+      }
+      
+      if(root.val==val)
+      {
+        return(root);
+      }
+      return(null);
+    }
+  }
+}
