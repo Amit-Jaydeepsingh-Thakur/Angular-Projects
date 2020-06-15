@@ -1,0 +1,42 @@
+link-https://www.hackerearth.com/practice/algorithms/dynamic-programming/2-dimensional/practice-problems/algorithm/gold-mines-10/submissions/
+import java.util.*;
+class TestClass {
+    public static void main(String args[] ) throws Exception 
+    {
+        int i=0,j=0,k=0,l=0,t=0,q=0,r=0,c=0,r1=0,r2=0,c1=0,c2=0;
+        long sum=0;
+        Scanner sc=new Scanner(System.in);
+        r=sc.nextInt();
+        c=sc.nextInt();
+        
+        long dp[][];
+        dp=new long[r+1][c+1];
+
+        for(j=1;j<r+1;j++)
+        {
+            for(k=1;k<c+1;k++)
+            {
+                dp[j][k]=sc.nextLong();
+            }
+        }
+
+        q=sc.nextInt();
+        for(j=0;j<q;j++)
+        {
+            r1=sc.nextInt();
+            c1=sc.nextInt();
+            r2=sc.nextInt();
+            c2=sc.nextInt();
+            
+            sum=0;
+            for(l=r1;l<=r2;l++)
+            {
+                for(k=c1;k<=c2;k++)
+                {
+                    sum+=dp[l][k];
+                }
+            }
+            System.out.println(sum);
+        }
+    }
+}
