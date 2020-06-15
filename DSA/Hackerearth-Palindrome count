@@ -1,0 +1,36 @@
+//link-https://www.hackerearth.com/practice/algorithms/dynamic-programming/2-dimensional/practice-problems/algorithm/palindrome-count-1/submissions/
+
+import java.util.*;
+
+class TestClass {
+    public static void main(String args[] ) throws Exception 
+    {
+        int i=0,iret1=0,iret2=0,cnt=0;
+
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+
+        for(i=0;i<str.length();i++)
+        {
+            iret1+=extendPalindrome(str,i,i);
+            iret2+=extendPalindrome(str,i,i+1);
+            
+        }
+        
+        System.out.println(iret1+iret2);
+    }
+
+    public static int extendPalindrome(String s,int left,int right)
+    {
+        int cnt=0;
+
+        while((left>=0 && right<s.length()) && (s.charAt(left)==s.charAt(right)))
+        {
+            left--;
+            right++;
+            cnt++;
+        }
+
+        return(cnt);        
+    }
+}
