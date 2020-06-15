@@ -1,0 +1,70 @@
+link-https://www.hackerearth.com/practice/algorithms/graphs/graph-representation/practice-problems/algorithm/monk-learning-graph-3/submissions/
+import java.util.*;
+
+class TestClass {
+    public static void main(String args[] ) throws Exception 
+    {
+        int i=0,j=0,t=0,n=0,A=0,B=0,iret=0,l=0,m=0,a=0,k=0;; 
+        Map<Integer,List<int[]>>map=new HashMap<>();
+        Scanner sc=new Scanner(System.in);
+                
+        n=sc.nextInt();
+        m=sc.nextInt();
+        k=sc.nextInt();
+        int cost[];
+        cost=new int[n+1];
+        for(j=1;j<=n;j++)
+        {
+            cost[j]=sc.nextInt();
+        }
+
+        for(a=0;a<m;a++)
+        {
+            A=sc.nextInt();
+            B=sc.nextInt();
+
+            if(!map.containsKey(A))
+            {
+                map.put(A,new ArrayList<>());
+            }
+
+            if(!map.containsKey(B))
+            {
+                map.put(B,new ArrayList<>());
+            }
+            map.get(A).add(new int[]{B,cost[B]});
+            map.get(B).add(new int[]{A,cost[A]});
+        }
+
+        for(Map.Entry<Integer,List<int[]>>e:map.entrySet())
+        {
+            List<int[]>edge=e.getValue();
+            Collections.sort(edge,new Comparator<int[]>()
+            {
+                @Override
+                public int compare(int[]o1,int[]o2)
+                {
+                    return(Integer.compare(o2[1],o1[1]));
+                }
+            });
+        }
+
+        for(Map.Entry<Integer,List<int[]>>e:map.entrySet())
+        {
+            int []c=e.getValue().get(k-1);
+            
+            if(c.length==2)
+            {
+                System.out.println(c[0]);
+            }
+            else if(c[0]==0)
+            {
+                System.out.println(-1);
+            }
+            
+        }
+        
+        
+    
+    }
+}
