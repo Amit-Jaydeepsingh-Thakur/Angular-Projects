@@ -1,0 +1,59 @@
+link-https://www.hackerearth.com/practice/algorithms/dynamic-programming/2-dimensional/practice-problems/algorithm/final-voyage-1/submissions/
+import java.util.*;
+
+class TestClass {
+    public static void main(String args[] ) throws Exception 
+    {
+        int i=0,j=0,iret=0,t=0,n=0,target=0;
+
+        Scanner sc=new Scanner(System.in);
+        t=sc.nextInt();
+        for(i=0;i<t;i++)
+        {
+            n=sc.nextInt();
+            target=sc.nextInt();
+            int wt[];
+            wt=new int[n];
+
+            int value[];
+            value=new int[n];
+
+            for(j=0;j<n;j++)
+            {
+                wt[j]=sc.nextInt();
+            }
+
+            for(j=0;j<n;j++)
+            {
+                value[j]=sc.nextInt();
+            }
+
+            iret=knapsack(wt,value,target);
+            System.out.println(iret);
+        }
+    }
+
+    public static int knapsack(int[]wt,int[]value,int target)
+    {
+        int i=0,j=0;
+        int dp[][];
+        dp=new int[value.length+1][target+1];
+
+        for(i=1;i<value.length+1;i++)
+        {
+            for(j=1;j<target+1;j++)
+            {
+                if(j>=wt[i-1])
+                {
+                    dp[i][j]=Math.max(value[i-1]+dp[i-1][j-wt[i-1]],dp[i-1][j]);
+                }
+                else
+                {
+                    dp[i][j]=dp[i-1][j];
+                }
+            }
+        }
+
+        return(dp[value.length][target]);
+    }
+}
