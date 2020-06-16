@@ -1,0 +1,113 @@
+Link-https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/practice-problems/algorithm/social-networking-graph/submissions/
+import java.util.*;
+
+
+class TestClass {
+    public static boolean visited[];
+    public static void main(String args[] ) throws Exception 
+    {
+        int i=0,n=0,e=0,q=0,A=0,B=0,target=0,distance=0;
+        Map<Integer,List<Integer>>map=new HashMap<>();
+        Scanner sc=new Scanner(System.in);
+        n=sc.nextInt();
+        visited=new boolean[n+1];
+        e=sc.nextInt();
+        for(i=0;i<e;i++)
+        {
+            A=sc.nextInt();
+            B=sc.nextInt();
+            if(!map.containsKey(A))
+            {
+                map.put(A,new ArrayList<>());
+            }
+            if(!map.containsKey(B))
+            {
+                map.put(B,new ArrayList<>());
+            }
+            List<Integer> list1=map.get(A);
+            List<Integer> list2=map.get(B);
+            if(!list1.contains(B))
+            {
+                map.get(A).add(B);
+            }
+            if(!list2.contains(A))
+            {
+                map.get(B).add(A);
+            }
+            
+        }
+        q=sc.nextInt();
+        for(i=0;i<q;i++)
+        {
+            int cnt=0;
+            target=sc.nextInt();
+            distance=sc.nextInt();
+            Arrays.fill(visited,false);
+            List<Integer>listM=map.get(target);
+            Set<Integer>set=new HashSet<>();
+            set.clear();
+            {
+                //System.out.println("here");
+                bfs(map,target,distance,set,listM);
+                if(distance!=1)
+                {
+                    for(int s:listM)
+                    {
+                       // System.out.print(s+" ");
+                        if(set.contains(s))
+                        {
+                            cnt++;
+                         }
+                    }
+                }
+                if(set.contains(target))
+                {
+                    cnt++;
+                }
+                //System.out.println(" ");
+                //Iterator<Integer>it=set.iterator();
+                // while(it.hasNext())
+                // {
+                //     System.out.print(it.next()+" ");
+                // }
+                System.out.println(set.size()-cnt);
+            }
+            
+        }
+    }
+
+    public static void bfs(Map<Integer,List<Integer>>map,int target,int distance,Set<Integer>set,List<Integer>list1)
+    {
+        List<Integer>list=map.get(target);
+        if(distance==1)
+        {
+            int cnt=0,cnt1=0;
+            for(int p:list)
+            {
+                if(!visited[p])
+                {
+                    visited[p]=true;
+                    set.add(p);
+                    //System.out.print(p+" ");
+                    //cnt++;
+                }
+            }
+            
+            //System.out.println(set.size()-cnt1);
+            //System.out.println(" ");
+        }
+        else
+        {
+            for(int p:list)
+            {
+                if(!visited[p])
+                {
+                    visited[p]=true;
+                    target=p;
+                    bfs(map,target,distance-1,set,list1);
+                }
+            }
+        }
+        return;
+    }
+}
