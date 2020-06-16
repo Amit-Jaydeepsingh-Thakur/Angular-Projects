@@ -1,0 +1,83 @@
+Link-https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/practice-problems/algorithm/monk-and-the-islands/submissions/
+import java.util.*;
+import java.lang.*;
+
+class TestClass {
+    public static int distance[];
+    public static void main(String args[] ) throws Exception 
+    {
+        int i=0,j=0,t=0,n=0,e=0,node1=0,node2=0,dist=0;
+        Map<Integer,List<Integer>>map=new HashMap<>();
+        Scanner sc=new Scanner(System.in);
+        t=sc.nextInt();
+        for(i=0;i<t;i++)
+        {
+            n=sc.nextInt();
+            e=sc.nextInt();
+            distance=new int[n+1];
+            for(j=0;j<distance.length;j++)
+            {
+                distance[j]=Integer.MAX_VALUE;
+            }
+            map.clear();
+            for(j=0;j<e;j++)
+            {
+                node1=sc.nextInt();
+                node2=sc.nextInt();
+
+                if(!map.containsKey(node1))
+                {
+                    map.put(node1,new ArrayList<>());
+                }
+
+                if(!map.containsKey(node2))
+                {
+                    map.put(node2,new ArrayList<>());
+                }
+
+                map.get(node1).add(node2);
+                map.get(node2).add(node1);
+                }
+            bfs(map,n);
+            // for(int k=0;k<distance.length;k++)
+            // {
+            //     System.out.print(distance[k]);
+            // }
+            System.out.println(distance[n]);
+        }
+    }
+
+    public static void bfs(Map<Integer,List<Integer>>map,int n)
+    {
+        int i=0,k=0,dist=0;
+        for(i=0;i<distance.length;i++)
+        {
+            distance[i]=Integer.MAX_VALUE;
+        }
+        for(i=1;i<=n;i++)
+        {
+            dist+=1;
+            List<Integer>list=map.get(i);
+            Stack<Integer>stack=new Stack<Integer>();
+            for(int e:list)
+            {
+                
+                    //System.out.println(e);
+                    stack.push(e);
+                    //bfs(e,end,map,dist+1);
+                
+                
+            }
+
+            while(!stack.isEmpty())
+            {
+                int start=stack.pop();
+                //dist++;
+                distance[start]=Math.min(distance[start],dist);
+                //bfs(start,end,map,dist);
+            }
+        }
+        
+        return;
+    }
+}
