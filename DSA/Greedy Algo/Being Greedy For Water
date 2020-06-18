@@ -1,0 +1,39 @@
+link-https://www.hackerearth.com/practice/algorithms/greedy/basics-of-greedy-algorithms/tutorial/
+import java.util.*;
+import java.lang.*;
+
+class TestClass {
+    public static void main(String args[] ) throws Exception 
+    {
+        int i=0,j=0,t=0,n=0,cnt=0;
+        long x=0,remToFill=0;
+        Scanner sc=new Scanner(System.in);
+        t=sc.nextInt();
+
+        for(i=0;i<t;i++)
+        {
+            n=sc.nextInt();
+            x=sc.nextLong();
+
+            long arr[];
+            arr=new long[n];
+
+            for(j=0;j<n;j++)
+            {
+                arr[j]=sc.nextLong();
+            }
+            Arrays.sort(arr);
+            cnt=0;
+            remToFill=0;
+            for(j=0;j<n;j++)
+            {
+                if(arr[j]<=x && (remToFill+arr[j])<=x)
+                {
+                    remToFill+=arr[j];
+                    cnt++;
+                }
+            }
+            System.out.println(cnt);
+        }
+    }
+}
