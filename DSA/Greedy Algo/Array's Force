@@ -1,0 +1,53 @@
+Link-https://www.hackerearth.com/practice/algorithms/greedy/basics-of-greedy-algorithms/practice-problems/algorithm/arrays-force-easy-contest/description/
+import java.util.*;
+import java.lang.*;
+
+class TestClass {
+    public static void main(String args[] ) throws Exception 
+    {
+        int i=0,j=0,t=0,n=0;
+        long zer=0,add=1,sum=0,first=0,second=0,MOD=0;
+        Map<Long,Long>map=new HashMap<>();
+        Scanner sc=new Scanner(System.in);
+        t=sc.nextInt();
+        for(i=0;i<t;i++)
+        {
+            
+            first=sc.nextLong();
+            second=sc.nextLong();
+            n=sc.nextInt();
+            MOD=sc.nextLong();
+
+            long arr[];
+            arr=new long[n];
+
+            arr[0]=first;
+            arr[1]=second;
+            sum=0;
+            map.clear();
+            for(j=2;j<n;j++)
+            {
+                arr[j]=(arr[j-1]+arr[j-2])%MOD;
+
+            }
+            for(j=0;j<arr.length;j++)
+            {
+                if(!map.containsKey(arr[j]))
+                {
+                    map.put(arr[j],zer);
+                    map.put(arr[j],map.get(arr[j])+add);
+                }
+                else
+                {
+                    map.put(arr[j],map.get(arr[j])+add);
+                }
+            }
+            for(Map.Entry<Long,Long>e:map.entrySet())
+            {
+                sum+=e.getValue()*e.getValue();
+            }
+
+            System.out.println(sum);
+        }
+    }
+}
