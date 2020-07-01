@@ -1,0 +1,51 @@
+Link:-https://practice.geeksforgeeks.org/problems/permutation-with-spaces/0
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) 
+	{
+	    int i=0,j=0,t=0;
+	    Scanner sc=new Scanner(System.in);
+	    t=sc.nextInt();
+	    sc.nextLine();
+	    for(i=0;i<t;i++)
+	    {
+	        String s=sc.nextLine();
+	        String IP="";
+	        String OP=Character.toString(s.charAt(0));
+	        StringBuilder sb=new StringBuilder();
+	        for(j=1;j<s.length();j++)
+	        {
+	            sb.append(s.charAt(j));
+	        }
+	        IP=sb.toString();
+	        
+	        solve(IP,OP);
+	        System.out.println(" ");
+	    }
+	}
+	
+	public static void  solve(String Ip,String OP)
+	{
+	    if(Ip.length()==0)
+	    {
+	        System.out.print("("+OP+")"+"");
+	        return;
+	    }
+	    //String newIp=Ip.substring(1,Ip.length());
+	    StringBuilder sb=new StringBuilder();
+        for(int j=1;j<Ip.length();j++)
+        {
+            sb.append(Ip.charAt(j));
+        }
+        String newIp=sb.toString();
+	    String OP1=OP+" "+Ip.charAt(0);
+	    String OP2=OP+Ip.charAt(0);
+	    
+	    solve(newIp,OP1);
+	    solve(newIp,OP2);
+	}
+}
