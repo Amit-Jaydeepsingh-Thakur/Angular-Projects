@@ -1,0 +1,78 @@
+Link-https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) 
+    {
+      
+      int i=0,j=0,m=0,level=0;
+      Queue<Pair<TreeNode,Integer>>q=new LinkedList<>();
+      List<List<Integer>>list=new ArrayList<>();
+      Map<Integer,List<Integer>>map=new HashMap<>();
+      q.add(new Pair<TreeNode,Integer>(root,1));
+      if(root==null)
+      {
+        return(list);
+      }
+      while(!q.isEmpty())
+      {
+        Pair<TreeNode,Integer>p=q.poll();
+        TreeNode n=p.getKey();
+        int a=p.getValue();
+        level=a+1;
+        m=Math.max(m,level);
+        
+        if(!map.containsKey(a))
+        {
+          map.put(a,new ArrayList<>());
+          map.get(a).add(n.val);  
+        }
+        else
+        {
+          map.get(a).add(n.val);
+        }
+        if(n.left!=null)
+        {
+          q.add(new Pair<TreeNode,Integer>(n.left,level));  
+        }
+        if(n.right!=null)
+        {
+          q.add(new Pair<TreeNode,Integer>(n.right,level));  
+        }
+      }
+      
+      for(Map.Entry<Integer,List<Integer>>e:map.entrySet())
+      {
+        List<Integer>d=new ArrayList<>();
+        for(int r:e.getValue())
+        {
+          d.add(r);
+        }
+        list.add(d);
+      }
+      
+      List<List<Integer>>retL=new ArrayList<>();
+      for(i=list.size()-1;i>=0;i--)
+      {
+        retL.add(list.get(i));
+      }
+      
+      
+      return(retL);
+      
+    }
+}
