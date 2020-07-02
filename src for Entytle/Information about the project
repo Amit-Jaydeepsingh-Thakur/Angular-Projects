@@ -1,0 +1,14 @@
+The given project is the To DO List App whiah contains the 4 parts:-
+
+1. app.component.css
+2. app.component.ts
+3. app.component.spec.ts
+4. app.component.html
+
+app.component.css-The given file contains the css of the project.
+
+app.component.html-The given file contains the html code of the project.
+
+app.component.ts-The given file contains the buisness logic of the project.
+
+app.component.spec.ts-The given file is used for unit testing  of the project.
