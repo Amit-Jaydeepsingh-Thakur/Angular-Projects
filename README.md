@@ -2,6 +2,7 @@
 This Repository is about the angular projects
 Created by- Amit Thakur
 
+
 For Running the Angular applications:-
 1. Go to the src
 2. Type in the command prompt-ng serve
