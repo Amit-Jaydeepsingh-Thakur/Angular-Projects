@@ -1,0 +1,24 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container-fluid">
+<title>Amits Web App</title>
+  <h3>TODO list Web APP</h3>
+  <h3>This is the app for the list of priority tasks which you want to implement!!!!!!!!!!!!!!!!!!</h3>
+  <br>
+  <form [formGroup]="supportForm">
+        
+         <input formControlName="name" type="text" class="form-control" #cnm>
+         <button type="button" (click)="list(cnm)">add item</button>
+         <small class="text-danger">{{err_msg}}</small>
+
+            <div *ngFor="let nam of list_names,let i=index">
+                <div *ngIf="nam!=''">
+                    {{nam}}
+                    <button type="button" (click)="delete(nam)">delete</button>
+                </div>
+            </div>
+         
+</form>
+
+</div>
+
+  
