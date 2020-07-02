@@ -1,0 +1,58 @@
+Link-https://leetcode.com/problems/letter-case-permutation/submissions/
+
+class Solution {
+    public List<String> letterCasePermutation(String S) 
+    {
+      if(S==null || S.length()==0)
+      {
+        return(new ArrayList<String>());
+      }
+        
+      String IP=S;
+      String OP="";
+      List<String>list=new ArrayList<>();
+      if(S.length()==1 && ((S.charAt(0)>='a' && S.charAt(0)<='z')||(S.charAt(0)>='A' && S.charAt(0)<='Z')))
+      {
+        System.out.println("here"+S.length());
+        list.add(S.toLowerCase());
+        list.add(S.toUpperCase());
+        return(list);
+      }
+      solve(IP,OP,list);
+      return(list);
+    }
+  
+  public void solve(String IP,String OP,List<String>list)
+  {
+    if(IP.length()==0)
+    {
+      System.out.println("here"+OP);
+      list.add(OP);
+      return;
+    }
+    else if(IP.charAt(0)>='0' && IP.charAt(0)<='9')
+    {
+      StringBuilder sb=new StringBuilder();
+      for(int i=1;i<IP.length();i++)
+      {
+        sb.append(IP.charAt(i));
+      }
+      String newIP=sb.toString();
+      String OP1=OP+Character.toString(IP.charAt(0));
+      solve(newIP,OP1,list);
+    }
+    else if((IP.charAt(0)>='a' && IP.charAt(0)<='z')||(IP.charAt(0)>='A' && IP.charAt(0)<='Z'))
+    {
+      StringBuilder sb=new StringBuilder();
+      for(int i=1;i<IP.length();i++)
+      {
+        sb.append(IP.charAt(i));
+      }
+      String newIP=sb.toString();
+      String OP1=OP+Character.toString(IP.charAt(0)).toLowerCase();
+      String OP2=OP+Character.toString(IP.charAt(0)).toUpperCase();
+      solve(newIP,OP1,list);
+      solve(newIP,OP2,list);
+    }
+  }
+}
