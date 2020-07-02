@@ -1,7 +1,6 @@
-# Angular-Projects
-This Repository is about the angular projects
-Created by- Amit Thakur
-
+#Angular Projects
+The given Repository contains the angular projects 
+created by- Amit Thakur
 
 For Running the Angular applications:-
 1. Go to the src
