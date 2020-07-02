@@ -46,7 +46,7 @@ class Solution {
               temp[0]=stack.peek()[0];
               temp[1]=stack.peek()[1];
               list1.add(temp[1]);
-              stack.push(temp);
+              //stack.push(temp);
             }
           }
         }
