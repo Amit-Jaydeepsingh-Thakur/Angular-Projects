@@ -1,5 +1,5 @@
 # Angular-Projects
-This Repository is about the angular projects\n
+This Repository is about the angular projects
 Created by- Amit Thakur
 
 #DSA
